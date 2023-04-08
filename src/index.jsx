@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import { ContextProviderTheme } from './Components/utils/Theme.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-      <App/>
+      <ContextProviderTheme>
+        <App/>
+      </ContextProviderTheme>
     </Router>
   </React.StrictMode>
 );
