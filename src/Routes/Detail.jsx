@@ -17,13 +17,15 @@ const  Detail = () => {
 
   return (
 
-      <div className="card" key={user.id}>
-      <h1>Detail Dentist {user.id}</h1>
-        <h3>{user.name}</h3>
-        <p>{user.email}</p> 
-        <p>{user.phone}</p>
-        <p>{user.website}</p> 
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+      <div className="card-grid">
+        <div className="card" key={user.id}>
+        <h1>Detail Dentist {user.id}</h1>
+          <h3>{user.name}</h3>
+          <p>{user.email}</p> 
+          <p>{user.phone}</p>
+          <p>{user.website}</p> 
+        {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+        </div>
       </div>
   
   );

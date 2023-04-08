@@ -8,16 +8,13 @@ const Favs = () => {
 
   const favs = localStorage.getItem('fav') || '[]';
   const favsArray = JSON.parse(favs);
-  console.log(favsArray);
-
-
   return (
     <>
       <h1>Dentists Favs</h1>
       <div className="card-grid">
-        <Card>
-          {favsArray}
-        </Card>
+        {favsArray.map((item) => (
+          <Card key={item.id} children={item}/>
+        ))}
         {/* Deberan renderizar una Card por cada uno de ellos */}
       </div>
     </>

@@ -7,6 +7,7 @@ import Contact from "./Routes/Contact";
 import Detail from "./Routes/Detail";
 import { useContext } from "react";
 import { ThemeContext } from "./Components/utils/Theme.context";
+import { ContextProvider } from "./Components/utils/Global.context";
 
 function App() {
   const contextTheme = useContext(ThemeContext);
@@ -14,15 +15,17 @@ function App() {
   return (
       <div className={`App ${contextTheme.theme}`}>
           <Navbar/> 
-          <Routes>
-              <Route path="/">
-                <Route index element={<Home/>}/>
-                <Route path="dentista/:id" element={<Detail/>}/>
-                <Route path="contact/*" element={<Contact/>}/>
-                <Route path="favs/*" element={<Favs/>}/>
-                <Route path="*" element={<h1>404 Not Found</h1>}/>
-              </Route>
-          </Routes> 
+          <ContextProvider>
+            <Routes>
+                <Route path="/">
+                  <Route index element={<Home/>}/>
+                  <Route path="dentista/:id" element={<Detail/>}/>
+                  <Route path="contact/*" element={<Contact/>}/>
+                  <Route path="favs/*" element={<Favs/>}/>
+                  <Route path="*" element={<h1>404 Not Found</h1>}/>
+                </Route>
+            </Routes> 
+          </ContextProvider>
           <Footer/>
     
       </div>
