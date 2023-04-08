@@ -7,17 +7,15 @@ export const  Card = (cards) => {
 
 
   useEffect(()=>{
-    console.log("efect");
     cards.children ? setUsers(cards.children) : console.log("no hay cards");
   }, [ user, cards.children])
 
   const addFav = (userFav)=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
     const users = localStorage.getItem('fav') || '[]';
-    let usersArray = JSON.parse(userFav);
+    let usersArray = JSON.parse(users);
     usersArray.some(u => u.id === userFav.id) ? console.log("existe") : usersArray.push(user ); 
     localStorage.setItem('fav', JSON.stringify(usersArray))
-    // setListUsers(usersArray)
+
   }
 
   // const removeFav = (array, id)=>{
@@ -32,12 +30,9 @@ export const  Card = (cards) => {
         <Link to={`/dentista/${user.id}`} >
           <span>{user.id}</span>
           <h3>{user.name}</h3>
-          <p>Username : {user.username}</p> 
-          {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-          {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-          <button onClick={()=>addFav(user)} className="favButton">Add fav</button>
         </Link>
+          <p>Username : {user.username}</p> 
+          <button onClick={()=>addFav(user)} className="favButton">Add fav</button>
       </div>
     )
 };
